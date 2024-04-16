@@ -3,36 +3,45 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 40px; /* Increased padding */
+    padding: 40px;
     gap: 20px;
-    border: 1px solid #ced4da; /* Softer border color */
+    border: 1px solid #ced4da;
     margin: auto;
     max-width: 80%;
     min-height: 90vh;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
-    background-color: #f8f9fa; /* Softer background color */
-    border-radius: 10px; /* Rounded corners */
-    overflow: hidden; /* Ensure inner elements don't overflow */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.parking-lot-title {
+    font-size: 2rem; /* Choose an appropriate size for your title */
+    font-weight: bold;
+    color: #343a40; /* You can choose a color that fits your theme */
+    margin-bottom: 1rem; /* Space between title and parking lot */
+    text-align: center;
 }
 
 .parking-lot {
+    padding: 20px;
     position: relative;
     width: 90%;
-    height: 80vh;
-    background-color: #e9ecef; /* Lighter shade for the driving lane */
+    height: 75vh;
+    background-color: #ced6dd;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none; /* Removed the inner border */
-    border-radius: 8px; /* Rounded corners for the inner container */
+    border: 1px solid #ced6dd;
+    border-radius: 8px;
 }
 
 .wall {
-    background-color: #343a40; /* Slightly lighter shade for contrast */
-    width: 30%;
-    height: 60%;
+    background-color: #343a40;
+    width: 40%;
+    height: 70%;
     z-index: 1;
-    border-radius: 8px; /* Rounded corners */
+    border-radius: 8px;
 }
 
 .lane {
@@ -42,6 +51,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 30px;
 }
 
 .parking-row {
@@ -52,54 +62,67 @@
 }
 
 .parking-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: white;
+    margin: 15px 0;
     background-color: #17a2b8;
-    width: 270px;
+    width: 360px;
     height: 200px;
     margin: 10px 0;
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* Soft shadow for depth */
-    cursor: pointer; /* Indicates that the slot is clickable */
-    transition: transform 0.2s, box-shadow 0.2s; /* Smooth transition for interaction */
-}
-
-.parking-slot:hover {
-    transform: scale(1.03); /* Slightly larger on hover */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
-}
-
-.exit {
-    position: absolute;
-    bottom: 5%; /* Adjusted for internal alignment */
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #ff6b6b;
-    width: 200px;
-    height: 60px; /* Slightly taller for emphasis */
-    z-index: 2;
-    border-radius: 30px; /* More rounded for a button-like appearance */
+    border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
+.parking-slot:hover {
+    transform: scale(0.98);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.exit {
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    transform-origin: bottom;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ff6b6b;
+    width: 200px;
+    height: 60px;
+    z-index: 2;
+    border-radius: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-weight: bold;
+    color: white;
+}
+
 .exit:hover {
-    transform: scale(1.05); /* Slightly larger on hover */
+    transform: translateX(-50%) scale(0.98);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .message-area {
-    width: 80%; /* Wider to align with the parking lot width */
-    padding: 15px; /* Slightly more padding */
+    width: 80%;
+    padding: 15px;
     border: 1px solid #ced4da;
     border-radius: 4px;
     background-color: white;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    font-size: 1.1rem; /* Slightly larger font */
-    color: #495057; /* Softer color for the text */
-    transition: background-color 0.2s; /* Smooth transition for interaction */
+    font-size: 1.1rem;
+    color: #495057;
+    transition: background-color 0.2s;
 }
 
 .message-area:hover {
-    background-color: #e2e6ea; /* Light shade on hover */
+    background-color: #e2e6ea;
 }

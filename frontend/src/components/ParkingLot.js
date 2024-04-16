@@ -4,6 +4,9 @@ import './ParkingLot.css';
 function ParkingLot() {
     return (
         <div className="parking-lot-container">
+            <div className="parking-lot-title">
+                Interactive Parking Lot Layout
+            </div>
             <div className="parking-lot">
                 <div className="wall"></div>
                 <div className="lane">
@@ -18,7 +21,7 @@ function ParkingLot() {
                         ))}
                     </div>
                 </div>
-                <div className="exit"></div>
+                <div className="exit">Exit</div>
             </div>
             <div className="message-area">
                 Messages go here
