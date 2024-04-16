@@ -1,15 +1,36 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './ParkingLot.css';
 
 function ParkingLot() {
     const [message, setMessage] = useState('Message will appear here');
 
+    const baseURL = 'http://172.24.246.248:5000';
+
     const handleSlotClick = (slotNumber) => {
         setMessage(`Car is moving to slot ${slotNumber}`);
+        axios.post(`${baseURL}/move`, { slot: slotNumber })
+            .then(response => {
+                console.log(response.data);
+                setMessage(`Response: ${response.data.message}`);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                setMessage(`Error: ${error.message}`);
+            });
     };
 
     const handleExitClick = () => {
         setMessage('Car is exiting the parking lot');
+        axios.post(`${baseURL}/exit`, { action: 'exit' })
+            .then(response => {
+                console.log(response.data);
+                setMessage(`Response: ${response.data.message}`);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                setMessage(`Error: ${error.message}`);
+            });
     };
 
     return (
