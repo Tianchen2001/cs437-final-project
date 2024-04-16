@@ -1,6 +1,6 @@
 # import picar_4wd as fc
 import numpy as np
-
+import control
 
 class ParkingSystem:
     def __init__(self, num_parking_slots=10, center_width=5):
