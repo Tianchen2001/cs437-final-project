@@ -1,15 +1,17 @@
 # import picar_4wd as fc
 import numpy as np
-import control
+
+from utils import navigate
 
 class ParkingSystem:
-    def __init__(self, num_parking_slots=10, center_width=5):
+    def __init__(self, num_parking_slots=10, center_width=9):
         self.num_rows, self.num_cols = num_parking_slots // 2, center_width + 2
         
         self.parking_lot_map = np.zeros((self.num_rows, self.num_cols))
         self.parking_lot_map[1:self.num_rows-1, 1:self.num_cols-1] = 1
         
         self.current_slot = None
+        self.current_pos = (self.num_rows - 1, self.num_cols // 2)
     
     def move_to(self, target_slot):
         if self.current_slot == target_slot:
@@ -28,8 +30,10 @@ class ParkingSystem:
             Whenever the car reaches the target slot, it stops and turns right to do a head-in parking.
             The scenario also applies when the car is exiting the parking lot.
         '''
+        navigate(self.parking_lot_map, self.current_pos, target_pos)
         
         self.current_slot = target_slot
+        self.current_pos = target_pos
         
     def _get_pos_by_slot(self, slot):
         return (slot - 1) % 5, self.num_cols - 1 if slot > 5 else 0
