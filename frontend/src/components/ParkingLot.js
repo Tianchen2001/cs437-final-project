@@ -42,16 +42,16 @@ function ParkingLot() {
                 <div className="wall"></div>
                 <div className="lane">
                     <div className="parking-row left">
-                        {Array.from({ length: 4 }, (_, index) => (
+                        {Array.from({ length: 3 }, (_, index) => (
                             <div key={`left-${index}`} className="parking-slot" onClick={() => handleSlotClick(index + 1)}>
                                 Slot {index + 1}
                             </div>
                         ))}
                     </div>
                     <div className="parking-row right">
-                        {Array.from({ length: 4 }, (_, index) => (
-                            <div key={`right-${index}`} className="parking-slot" onClick={() => handleSlotClick(index + 5)}>
-                                Slot {index + 5}
+                        {Array.from({ length: 3 }, (_, index) => (
+                            <div key={`right-${index}`} className="parking-slot" onClick={() => handleSlotClick(index + 4)}>
+                                Slot {index + 4}
                             </div>
                         ))}
                     </div>
