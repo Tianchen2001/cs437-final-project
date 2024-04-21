@@ -5,6 +5,7 @@ import time
 
 def navigate(nav_map, start_pos, end_pos, forward_dir):
     path_list = astar(nav_map, start_pos, end_pos)
+    print(path_list)
     
     curr_dir = forward_dir
     prev_node = path_list[0]
@@ -68,6 +69,10 @@ def navigate(nav_map, start_pos, end_pos, forward_dir):
                 curr_dir = 2
                 move_forward()
         prev_node = curr_node
+    
+    fc.stop()
+
+    return curr_dir
 
 def astar(nav_map, start_pos, end_pos):
     open_list = [(0, start_pos)]
@@ -111,6 +116,14 @@ def get_children(pos, nav_map):
         for child in [(x + 1, y), (x, y + 1), (x - 1, y)]:
             if 0 <= child[0] < nav_map.shape[0] and 0 <= child[1] < nav_map.shape[1] and nav_map[child] == 0:
                 children.append(child)
+    elif y == 0:
+        for child in [(x + 1, y), (x, y + 1), (x, y - 1)]:
+            if 0 <= child[0] < nav_map.shape[0] and 0 <= child[1] < nav_map.shape[1] and nav_map[child] == 0:
+                children.append(child)
+    elif y == nav_map.shape[1] - 1:
+        for child in [(x, y + 1), (x - 1, y), (x, y - 1)]:
+            if 0 <= child[0] < nav_map.shape[0] and 0 <= child[1] < nav_map.shape[1] and nav_map[child] == 0:
+                children.append(child)
     else:
         for child in [(x + 1, y), (x, y + 1), (x - 1, y), (x, y - 1)]:
             if 0 <= child[0] < nav_map.shape[0] and 0 <= child[1] < nav_map.shape[1] and nav_map[child] == 0:
@@ -123,19 +136,16 @@ def get_distance(pos, target):
 
 def turn_left():
     fc.turn_left(30)
-    time.sleep(1.8)
+    time.sleep(2)
 
 def turn_right():
     fc.turn_right(30)
-    time.sleep(1.8)
+    time.sleep(2)
 
 def move_forward():
     fc.forward(1)
-    time.sleep(0.02)
+    time.sleep(1.15)
     
 def move_backward():
     fc.backward(1)
-    time.sleep(0.02)
-
-def stop():
-    fc.stop()
+    time.sleep(1.15)
