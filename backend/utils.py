@@ -149,3 +149,12 @@ def move_forward():
 def move_backward():
     fc.backward(1)
     time.sleep(1.15)
+
+def track_line():
+    gs_list = fc.get_grayscale_list()
+    if fc.get_line_status(50,gs_list) == 0:
+        fc.forward(Track_line_speed)
+    elif fc.get_line_status(50,gs_list) == -1:
+        fc.turn_left(Track_line_speed)
+    elif fc.get_line_status(50,gs_list) == 1:
+        fc.turn_right(Track_line_speed)
