@@ -3,10 +3,71 @@ import picar_4wd as fc
 import heapq
 import time
 
-def navigate(nav_map, start_pos, end_pos):
+def navigate(nav_map, start_pos, end_pos, forward_dir):
     path_list = astar(nav_map, start_pos, end_pos)
-    print(path_list)
-    pass
+    
+    curr_dir = forward_dir
+    prev_node = path_list[0]
+
+    for idx in range(1, len(path_list)):
+        curr_node = path_list[idx]
+        if curr_dir == 0:
+            if curr_node[1] - prev_node[1] == 1:
+                print("move forward")
+                move_forward()
+            elif curr_node[0] - prev_node[0] == -1:
+                print("turn left")
+                turn_left()
+                curr_dir = 1
+                move_forward()
+            elif curr_node[0] - prev_node[0] == 1:
+                print("turn right")
+                turn_right()
+                curr_dir = 3
+                move_forward()
+        elif curr_dir == 1:
+            if curr_node[0] - prev_node[0] == -1:
+                print("move forward")
+                move_forward()
+            elif curr_node[1] - prev_node[1] == -1:
+                print("turn left")
+                turn_left()
+                curr_dir = 2
+                move_forward()
+            elif curr_node[1] - prev_node[1] == 1:
+                print("turn right")
+                turn_right()
+                curr_dir = 0
+                move_forward()
+        elif curr_dir == 2:
+            if curr_node[1] - prev_node[1] == -1:
+                print("move forward")
+                move_forward()
+            elif curr_node[0] - prev_node[0] == 1:
+                print("turn left")
+                turn_left()
+                curr_dir = 3
+                move_forward()
+            elif curr_node[0] - prev_node[0] == -1:
+                print("turn right")
+                turn_right()
+                curr_dir = 1
+                move_forward()
+        elif curr_dir == 3:
+            if curr_node[0] - prev_node[0] == 1:
+                print("move forward")
+                move_forward()
+            elif curr_node[1] - prev_node[1] == 1:
+                print("turn left")
+                turn_left()
+                curr_dir = 0
+                move_forward()
+            elif curr_node[1] - prev_node[1] == -1:
+                print("turn right")
+                turn_right()
+                curr_dir = 2
+                move_forward()
+        prev_node = curr_node
 
 def astar(nav_map, start_pos, end_pos):
     open_list = [(0, start_pos)]

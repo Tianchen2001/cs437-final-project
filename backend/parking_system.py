@@ -4,7 +4,7 @@ import numpy as np
 from utils import navigate
 
 class ParkingSystem:
-    def __init__(self, num_parking_slots=10, center_width=9):
+    def __init__(self, num_parking_slots=6, center_width=9):
         self.num_rows, self.num_cols = num_parking_slots // 2, center_width + 2
         
         self.parking_lot_map = np.zeros((self.num_rows, self.num_cols))
@@ -12,6 +12,8 @@ class ParkingSystem:
         
         self.current_slot = None
         self.current_pos = (self.num_rows - 1, self.num_cols // 2)
+
+        self.forward_dir = 0
     
     def move_to(self, target_slot):
         if self.current_slot == target_slot:
@@ -22,7 +24,6 @@ class ParkingSystem:
             target_pos = (self.num_rows - 1, self.num_cols // 2)
         else:
             target_pos = self._get_pos_by_slot(target_slot)
-        print(target_pos, self.parking_lot_map[target_pos])
         
         '''
             TODO: Implement path planning algorithm.
