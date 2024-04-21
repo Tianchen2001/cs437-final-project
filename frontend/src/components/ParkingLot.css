@@ -7,8 +7,8 @@
     gap: 20px;
     border: 1px solid #ced4da;
     margin: auto;
-    max-width: 80%;
-    min-height: 90vh;
+    max-width: 80vw;
+    height: 85vh;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     background-color: #f8f9fa;
     border-radius: 10px;
@@ -38,8 +38,8 @@
 
 .wall {
     background-color: #343a40;
-    width: 40%;
-    height: 70%;
+    width: 30%;
+    height: 60%;
     z-index: 1;
     border-radius: 8px;
 }
@@ -70,8 +70,8 @@
     color: white;
     margin: 15px 0;
     background-color: #17a2b8;
-    width: 360px;
-    height: 200px;
+    width: 20vw;
+    height: 12vh;
     margin: 10px 0;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
@@ -94,8 +94,8 @@
     align-items: center;
     justify-content: center;
     background-color: #ff6b6b;
-    width: 200px;
-    height: 60px;
+    width: 10vw;
+    height: 40px;
     z-index: 2;
     border-radius: 30px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);

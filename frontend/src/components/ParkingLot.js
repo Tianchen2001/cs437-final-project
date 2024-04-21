@@ -5,7 +5,7 @@ import './ParkingLot.css';
 function ParkingLot() {
     const [message, setMessage] = useState('Message will appear here');
 
-    const baseURL = 'http://172.24.246.248:5000';
+    const baseURL = 'http://192.168.88.220:5000';
 
     const handleSlotClick = (slotNumber) => {
         setMessage(`Car is moving to slot ${slotNumber}`);
@@ -42,16 +42,16 @@ function ParkingLot() {
                 <div className="wall"></div>
                 <div className="lane">
                     <div className="parking-row left">
-                        {Array.from({ length: 5 }, (_, index) => (
+                        {Array.from({ length: 4 }, (_, index) => (
                             <div key={`left-${index}`} className="parking-slot" onClick={() => handleSlotClick(index + 1)}>
                                 Slot {index + 1}
                             </div>
                         ))}
                     </div>
                     <div className="parking-row right">
-                        {Array.from({ length: 5 }, (_, index) => (
-                            <div key={`right-${index}`} className="parking-slot" onClick={() => handleSlotClick(index + 6)}>
-                                Slot {index + 6}
+                        {Array.from({ length: 4 }, (_, index) => (
+                            <div key={`right-${index}`} className="parking-slot" onClick={() => handleSlotClick(index + 5)}>
+                                Slot {index + 5}
                             </div>
                         ))}
                     </div>
