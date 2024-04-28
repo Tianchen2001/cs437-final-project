@@ -18,6 +18,9 @@ class ParkingSystem:
         if self.current_slot == target_slot:
             return
         
+        if self.current_slot is not None:
+            self._back_out()
+
         target_pos = None
         if target_slot is None:
             target_pos = (self.num_rows - 1, self.num_cols // 2)
@@ -29,6 +32,8 @@ class ParkingSystem:
         self.current_slot = target_slot
         self.current_pos = target_pos
         self.current_dir = curr_dir
+
+        self._forward_in()
     
     def _forward_in(self):
         if self.current_slot > 3:
@@ -43,7 +48,7 @@ class ParkingSystem:
         
         self.current_dir = target_dir
     
-    def _back_out(self, slot):
+    def _back_out(self):
         if self.current_slot > 3:
             target_dir = 2
         else:
