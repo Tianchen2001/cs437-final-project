@@ -36,6 +36,9 @@ class ParkingSystem:
         self._forward_in()
     
     def _forward_in(self):
+        if self.current_slot is None:
+            return
+
         if self.current_slot > 3:
             target_dir = 0
         else:
@@ -49,6 +52,9 @@ class ParkingSystem:
         self.current_dir = target_dir
     
     def _back_out(self):
+        if self.current_slot is None:
+            return
+            
         if self.current_slot > 3:
             target_dir = 2
         else:
